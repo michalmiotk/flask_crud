@@ -1,4 +1,16 @@
 Hello there
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}"/>
+{% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+        <ul class=flashes>
+            {% for category, message in messages %}
+                <div class="{{ category }}">
+                    <li>{{ message }}</li>
+                </div>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
 <form action="/internal_create_user" method="POST">
     <label for="username">username`</label>
     <input type="text" name="username" id="username" value="username"/><br>
